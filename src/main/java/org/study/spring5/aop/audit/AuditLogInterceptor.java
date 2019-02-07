@@ -1,4 +1,4 @@
-package org.study.spring5.aop;
+package org.study.spring5.aop.audit;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
@@ -29,7 +29,6 @@ public class AuditLogInterceptor implements MethodInterceptor {
                 if (argument instanceof DefaultBusinessRequest) {
                     DefaultBusinessRequest msg = (DefaultBusinessRequest) argument;
                     BusinessContext ctx = msg.getContext();
-                    str.append("|");
                     str.append(ctx.getId());
                     str.append("|");
                     str.append(ctx.getUsername());

@@ -1,4 +1,4 @@
-package org.study.spring5.aop;
+package org.study.spring5.aop.audit;
 
 public final class AuditLog {
 
