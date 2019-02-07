@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="messageDispatcher" class="org.study.spring5.container.dependencies.MessageDispatcher">
+        <constructor-arg ref="dispatcherSource"/>
+    </bean>
+
+    <bean id="dispatcherSource" class="org.study.spring5.container.dependencies.DispatcherSource"/>
+    <bean class="org.study.spring5.container.dependencies.DispatcherSource"/>
+    <bean class="org.study.spring5.container.dependencies.DispatcherSource"/>
+    <bean class="org.study.spring5.container.dependencies.DispatcherSource"/>
+    <bean class="org.study.spring5.container.dependencies.DispatcherSource" autowire-candidate="false"/>
+    <bean class="org.study.spring5.container.dependencies.DispatcherSource"/>
+    <bean class="org.study.spring5.container.dependencies.DispatcherSource"/>
+    <bean class="org.study.spring5.container.dependencies.DispatcherSource"/>
+    <bean class="org.study.spring5.container.dependencies.DispatcherSource"/>
+    <bean class="org.study.spring5.container.dependencies.DispatcherSource"/>
+
+    <!--
+      This allows multiple beans injection into the List<DispatcherSource> of MessageDispatcher class.
+    -->
+
+    <bean id="messageDispatcher2" class="org.study.spring5.container.dependencies.MessageDispatcher"
+          autowire="constructor"
+    />
+
+
+</beans>

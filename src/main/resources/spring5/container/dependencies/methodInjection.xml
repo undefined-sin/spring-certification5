@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="simpleCommandManager" class="org.study.spring5.container.dependencies.SimpleCommandManager"/>
+
+    <bean scope="prototype" name="dispatcherSource"
+          class="org.study.spring5.container.dependencies.DispatcherSource"/>
+
+    <!-- Method lookup example, implementation is created on the fly using cglib. -->
+    <bean id="lookupCmd" class="org.study.spring5.container.dependencies.CommandManager">
+        <lookup-method name="getDispatcherSource" bean="dispatcherSource"/>
+    </bean>
+</beans>

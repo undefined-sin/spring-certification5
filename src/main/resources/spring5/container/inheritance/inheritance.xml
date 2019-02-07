@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+      ">
+   <bean id="masterQueueTemplate" class="org.study.spring5.container.inheritance.AbstractService"
+       abstract="true"
+   >
+       <constructor-arg type="java.lang.String" value="http://localhost" />
+       <constructor-arg type="int" value="8080" />
+   </bean>
+
+    <bean id="simpleQueue" class="org.study.spring5.container.inheritance.SimpleQueueService"
+       parent="masterQueueTemplate">
+        <property name="queue" value="QX5"/>
+    </bean>
+
+    <bean id="simpleQueue2" class="org.study.spring5.container.inheritance.SimpleQueueService"
+          parent="masterQueueTemplate"
+    >
+        <property name="port" value="9090"/>
+        <property name="queue" value="QX51"/>
+    </bean>
+
+
+</beans>
