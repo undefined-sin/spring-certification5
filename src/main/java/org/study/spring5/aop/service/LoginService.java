@@ -9,6 +9,11 @@ import org.study.spring5.aop.flow.BusinessResponse;
 
 @Service
 public interface LoginService {
-    @Audited(description = "Critical part that requires audit.", key = "load_user")
+    @Audited(key = "load_user")
     BusinessResponse<User> getUser(BusinessRequest<String> request);
+
+    @Audited(key = "delete_user")
+    BusinessResponse<String> deleteUser(BusinessRequest<Integer> request);
+
+    BusinessResponse<Void> logWarning(BusinessRequest<String> request);
 }

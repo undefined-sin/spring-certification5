@@ -26,6 +26,11 @@ public class AopApp extends StudyApp {
         User user = response.getPayload();
 
         log(user.toString());
+
+        loginService.deleteUser(DefaultBusinessRequest.of(businessCtx, user.getId()));
+
+        loginService.logWarning(DefaultBusinessRequest.of(businessCtx, user.getId()));
+
         ctx.close();
     }
 }

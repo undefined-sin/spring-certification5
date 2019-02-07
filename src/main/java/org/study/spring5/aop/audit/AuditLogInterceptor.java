@@ -6,6 +6,8 @@ import org.springframework.core.annotation.AnnotationUtils;
 import org.study.spring5.aop.annotation.Audited;
 import org.study.spring5.aop.flow.BusinessContext;
 import org.study.spring5.aop.flow.DefaultBusinessRequest;
+import org.study.spring5.aop.flow.DefaultBusinessResponse;
+import org.study.spring5.aop.message.Messages;
 import org.study.spring5.aop.message.SystemMessage;
 
 import java.lang.reflect.Method;
@@ -47,8 +49,13 @@ public class AuditLogInterceptor implements MethodInterceptor {
             str.append("|");
             Object proceed = invocation.proceed();
             if (proceed instanceof SystemMessage) {
-                SystemMessage msg = (SystemMessage) proceed;
+                DefaultBusinessResponse msg = (DefaultBusinessResponse) proceed;
                 str.append(msg.getPayload());
+                Messages messages = msg.getMessages();
+                if (messages.hasMessages()) {
+                    str.append("|");
+                    str.append(messages.getHighestPriority());
+                }
             }
             str.append("|");
             System.out.println(str);

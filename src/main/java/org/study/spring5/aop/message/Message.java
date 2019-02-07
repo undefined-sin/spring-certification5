@@ -1,8 +1,11 @@
 package org.study.spring5.aop.message;
 
+import javax.print.attribute.standard.Severity;
+
 public class Message {
 
-    enum Severity {
+
+    public enum Severity {
         DEFAULT,
         INFO,
         ERROR,
@@ -28,5 +31,18 @@ public class Message {
 
     public Severity getSeverity() {
         return severity;
+    }
+
+    public void setSeverity(Severity severity) {
+        this.severity = severity;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "code='" + code + '\'' +
+                ", path='" + path + '\'' +
+                ", severity=" + severity +
+                '}';
     }
 }
