@@ -8,7 +8,7 @@ public class SimpleCommandManager extends CommandManager implements ApplicationC
 
     private ApplicationContext appContext;
 
-    // This is not desirable because business code is aware of ApplicationContext.
+    // This is not desirable because flow code is aware of ApplicationContext.
     @Override
     public void setApplicationContext(ApplicationContext ctx) throws BeansException {
         this.appContext = ctx;
