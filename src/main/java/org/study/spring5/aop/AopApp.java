@@ -29,7 +29,7 @@ public class AopApp extends StudyApp {
 
         loginService.deleteUser(DefaultBusinessRequest.of(businessCtx, user.getId()));
 
-        loginService.logWarning(DefaultBusinessRequest.of(businessCtx, user.getId()));
+        loginService.logWarning(DefaultBusinessRequest.of(businessCtx, String.valueOf(user.getId())));
 
         ctx.close();
     }

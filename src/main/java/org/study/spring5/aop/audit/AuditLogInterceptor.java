@@ -8,7 +8,7 @@ import org.study.spring5.aop.flow.BusinessContext;
 import org.study.spring5.aop.flow.DefaultBusinessRequest;
 import org.study.spring5.aop.flow.DefaultBusinessResponse;
 import org.study.spring5.aop.message.Messages;
-import org.study.spring5.aop.message.SystemMessage;
+import org.study.spring5.aop.flow.SystemMessage;
 
 import java.lang.reflect.Method;
 
@@ -30,7 +30,7 @@ public class AuditLogInterceptor implements MethodInterceptor {
                 Object argument = invocation.getArguments()[0];
                 if (argument instanceof DefaultBusinessRequest) {
                     DefaultBusinessRequest msg = (DefaultBusinessRequest) argument;
-                    BusinessContext ctx = msg.getContext();
+                    BusinessContext ctx = (BusinessContext) msg.getContext();
                     str.append(ctx.getId());
                     str.append("|");
                     str.append(ctx.getUsername());

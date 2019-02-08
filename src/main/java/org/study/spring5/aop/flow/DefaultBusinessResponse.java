@@ -2,14 +2,13 @@ package org.study.spring5.aop.flow;
 
 import org.study.spring5.aop.message.Message;
 import org.study.spring5.aop.message.Messages;
-import org.study.spring5.aop.message.SystemMessage;
 
-public class DefaultBusinessResponse<T> extends SystemMessage<T> implements BusinessResponse<T> {
+public class DefaultBusinessResponse<T> extends SystemMessage<BusinessContext, T> implements BusinessResponse<T> {
 
     private final Messages messages;
 
-    public DefaultBusinessResponse(T payload) {
-        super(payload);
+    public DefaultBusinessResponse(BusinessContext ctx, T payload) {
+        super(ctx, payload);
         this.messages = new Messages();
     }
 
@@ -22,7 +21,7 @@ public class DefaultBusinessResponse<T> extends SystemMessage<T> implements Busi
         this.messages.addMessage(message);
     }
 
-    public static <E> DefaultBusinessResponse of(E payload) {
-        return new DefaultBusinessResponse(payload);
+    public static <E> DefaultBusinessResponse<E> of(BusinessContext ctx, E payload) {
+        return new DefaultBusinessResponse(ctx, payload);
     }
 }

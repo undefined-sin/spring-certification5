@@ -15,13 +15,13 @@ public class LoginServiceMock implements LoginService {
     @Override
     public BusinessResponse<User> getUser(BusinessRequest<String> request) {
         User user = new User(1L, "Michael Jackson");
-        return DefaultBusinessResponse.of(user);
+        return DefaultBusinessResponse.of(request.getContext(), user);
     }
 
     @Override
-    public BusinessResponse<String> deleteUser(BusinessRequest<Integer> request) {
+    public BusinessResponse<String> deleteUser(BusinessRequest<Long> request) {
         String id = String.valueOf(request.getPayload());
-        DefaultBusinessResponse response = DefaultBusinessResponse.of(id);
+        DefaultBusinessResponse response = DefaultBusinessResponse.of(request.getContext(), id);
         Message message = new Message("error", "default");
         message.setSeverity(Message.Severity.ERROR);
         response.addMessage(message);
@@ -29,8 +29,9 @@ public class LoginServiceMock implements LoginService {
     }
 
     @Override
-    public BusinessResponse<Void> logWarning(BusinessRequest<String> request) {
+    public BusinessResponse<Long> logWarning(BusinessRequest<String> request) {
         System.out.println("Warning...");
-        return DefaultBusinessResponse.of(Void.TYPE);
+        Long id = Long.valueOf(request.getPayload());
+        return DefaultBusinessResponse.of(request.getContext(), id);
     }
 }

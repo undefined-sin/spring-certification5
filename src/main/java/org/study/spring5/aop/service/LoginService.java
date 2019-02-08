@@ -13,7 +13,7 @@ public interface LoginService {
     BusinessResponse<User> getUser(BusinessRequest<String> request);
 
     @Audited(key = "delete_user")
-    BusinessResponse<String> deleteUser(BusinessRequest<Integer> request);
+    BusinessResponse<String> deleteUser(BusinessRequest<Long> request);
 
-    BusinessResponse<Void> logWarning(BusinessRequest<String> request);
+    BusinessResponse<Long> logWarning(BusinessRequest<String> request);
 }
