@@ -34,4 +34,10 @@ public class LoginServiceMock implements LoginService {
         Long id = Long.valueOf(request.getPayload());
         return DefaultBusinessResponse.of(request.getContext(), id);
     }
+
+    @Override
+    public BusinessResponse<Integer> convertUserToID(BusinessRequest<String> request) {
+        System.out.println("Converting user to ID");
+        return DefaultBusinessResponse.of(request.getContext(), 0);
+    }
 }

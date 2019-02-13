@@ -12,11 +12,11 @@ import org.study.spring5.aop.service.LoginService;
 
 @ComponentScan
 @Configuration
-public class AopApp extends StudyApp {
+public class ProxyBasedExample extends StudyApp {
 
 
     public static void main(String args[]) {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AopApp.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ProxyBasedExample.class);
         LoginService loginService = ctx.getBean(LoginService.class);
 
         BusinessContext businessCtx = new BusinessContext(1L, "ADMIN");

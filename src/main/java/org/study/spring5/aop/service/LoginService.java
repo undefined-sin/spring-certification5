@@ -16,4 +16,6 @@ public interface LoginService {
     BusinessResponse<String> deleteUser(BusinessRequest<Long> request);
 
     BusinessResponse<Long> logWarning(BusinessRequest<String> request);
+
+    BusinessResponse<Integer> convertUserToID(BusinessRequest<String> request);
 }
